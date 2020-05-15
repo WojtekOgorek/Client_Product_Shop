@@ -1,3 +1,5 @@
+package ogorek.wojciech.service;
+
 import ogorek.wojciech.persistence.model.Client;
 import ogorek.wojciech.persistence.model.ClientWithProducts;
 import ogorek.wojciech.persistence.model.Product;
