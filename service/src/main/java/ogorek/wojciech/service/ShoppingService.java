@@ -10,6 +10,7 @@ import ogorek.wojciech.persistence.validator.impl.ClientWithProductsValidator;
 
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
@@ -88,7 +89,33 @@ public class ShoppingService {
 
     }
 
-    //method 2.
+    //method 2.In separate method show client that paid the most in selected category.
+    //Name of category pass as an method argument
+
+    public Client getCategoryHighestPaymentClient(String category){
+        if(category == null){
+            throw new AppException("getCategoryHighestPaymentClient value is null");
+        }
+
+        return clientsWithProducts
+                .entrySet()
+                .stream()
+                .max(Comparator.comparing(client -> totalPriceForProductsFromCategory(client.getValue(), category)))
+                .orElseThrow()
+                .getKey();
+
+    }
+
+    private BigDecimal totalPriceForProductsFromCategory(Map<Product, Long> products, String category){
+        return products
+                .entrySet()
+                .stream()
+                .filter(e -> e.getKey().getCategory().equals(category))
+                .flatMap(value -> Collections.nCopies(value.getValue().intValue(), value.getKey()).stream())
+                .map(p -> p.getPrice())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
 
     private BigDecimal countProductsPrice(Map<Product, Long> products) {
 
