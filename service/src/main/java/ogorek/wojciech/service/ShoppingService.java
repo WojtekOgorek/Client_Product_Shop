@@ -125,4 +125,37 @@ public class ShoppingService {
                 .map(value -> value.getKey().getPrice().multiply(BigDecimal.valueOf(value.getValue())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
+
+
+    //method 3. Create a map, where key is product category and value is age of clients that bought the most in this cat.
+
+    public Map<String, Integer> getClientsAgeToCategory() {
+        return clientsWithProducts
+                .entrySet()
+                .stream()
+                .collect(Collectors.groupingBy(
+                        c -> getMaxCategory(c.getValue()),
+                        Collectors.collectingAndThen(
+                                Collectors.mapping(age -> age.getKey().getAge(), Collectors.toList()),
+                                items -> items
+                                        .stream()
+                                        .max(Integer::compareTo)
+                                        .orElseThrow()
+                        )));
+    }
+
+
+    private String getMaxCategory(Map<Product, Long> products) {
+
+        return products
+                .entrySet()
+                .stream()
+                .flatMap(product -> Collections.nCopies(product.getValue().intValue(), product.getKey().getCategory()).stream())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .orElseThrow()
+                .getKey();
+    }
 }
