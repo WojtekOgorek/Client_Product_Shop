@@ -7,13 +7,11 @@ import ogorek.wojciech.persistence.model.Client;
 import ogorek.wojciech.persistence.model.ClientWithProducts;
 import ogorek.wojciech.persistence.model.Product;
 import ogorek.wojciech.persistence.validator.impl.ClientWithProductsValidator;
+import org.eclipse.collections.impl.collector.Collectors2;
 
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -157,5 +155,32 @@ public class ShoppingService {
                 .max(Map.Entry.comparingByValue())
                 .orElseThrow()
                 .getKey();
+    }
+
+    //method 4.Returns map with average, min, max price of specific category
+
+    public Map<String, Statistic> getCategoryAndPriceStatistics() {
+
+        return clientsWithProducts
+                .entrySet()
+                .stream()
+                .flatMap(e -> e.getValue().entrySet().stream().flatMap(ee -> Collections.nCopies(ee.getValue().intValue(), ee.getKey()).stream()))
+                .collect(Collectors.groupingBy(
+                        Product::getCategory,
+                        Collectors.collectingAndThen(Collectors.toList(), this::productsStatistic)));
+
+
+    }
+
+    private Statistic productsStatistic(List<Product> products) {
+        var stats = products
+                .stream()
+                .collect(Collectors2.summarizingBigDecimal(Product::getPrice));
+        return Statistic
+                .builder()
+                .min(stats.getMin())
+                .max(stats.getMax())
+                .avg(stats.getAverage())
+                .build();
     }
 }
