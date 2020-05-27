@@ -156,7 +156,7 @@ public class ShoppingService {
                 .orElseThrow()
                 .getKey();
     }
-
+    //TODO
     //method 4.Returns map with average, min, max price of specific category
 
     public Map<String, Statistic> getCategoryAndPriceStatistics() {
@@ -183,4 +183,47 @@ public class ShoppingService {
                 .avg(stats.getAverage())
                 .build();
     }
+
+    //   method 5.Map that show clients that bought the most products of specific category.
+
+    public Map<String, Client> getClientsAndCategory() {
+        return clientsWithProducts
+                .entrySet()
+                .stream()
+                .flatMap(e -> e.getValue()
+                        .entrySet()
+                        .stream()
+                        .flatMap(ee -> Collections.nCopies(ee.getValue().intValue(), ee.getKey().getCategory()).stream()))
+                .distinct()
+                .collect(Collectors.toMap(category -> category, this::findClientWithMaxCategory));
+
+    }
+
+    private Client findClientWithMaxCategory(String category) {
+        return clientsWithProducts
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        v -> countProductsCategory(v.getValue(), category)
+
+                ))
+                .entrySet()
+                .stream()
+                .max(Comparator.comparing(Map.Entry::getValue))
+                .orElseThrow()
+                .getKey();
+    }
+
+    private long countProductsCategory(Map<Product, Long> products, String category) {
+        return products
+                .entrySet()
+                .stream()
+                .filter(e -> e.getKey().getCategory().equals(category))
+                .map(Map.Entry::getValue)
+                .reduce(0L, Long::sum);
+
+    }
+
+
 }
