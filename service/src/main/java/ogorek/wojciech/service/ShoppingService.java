@@ -225,5 +225,24 @@ public class ShoppingService {
 
     }
 
+    //method 6.
+
+    public Map<Client, BigDecimal> clientsWallet() {
+        return clientsWithProducts
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        this::calculateDebt
+                ));
+    }
+
+    private BigDecimal calculateDebt(Map.Entry<Client, Map<Product, Long>> entry) {
+        var clientCash = entry.getKey().getCash();
+        var valueToPay = countProductsPrice(entry.getValue());
+        return clientCash.compareTo(valueToPay) < 0 ? clientCash.subtract(valueToPay) : BigDecimal.ZERO;
+    }
+
+
 
 }
