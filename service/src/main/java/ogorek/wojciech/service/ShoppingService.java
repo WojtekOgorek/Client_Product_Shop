@@ -7,6 +7,8 @@ import ogorek.wojciech.persistence.model.Client;
 import ogorek.wojciech.persistence.model.ClientWithProducts;
 import ogorek.wojciech.persistence.model.Product;
 import ogorek.wojciech.persistence.validator.impl.ClientWithProductsValidator;
+import ogorek.wojciech.service.enums.Category;
+import ogorek.wojciech.service.statistics.Statistic;
 import org.eclipse.collections.impl.collector.Collectors2;
 
 
@@ -40,9 +42,9 @@ public class ShoppingService {
                                 .filter(client -> {
                                     var errors = clientWithProductsValidator.validate(client);
                                     if (clientWithProductsValidator.hasErrors()) {
-                                        System.out.println("----------- validation error for client nr." + counter.get() + " in file " + jsonFilename + " -------------");
+                                        System.out.println("\n----------- validation error for client nr." + counter.get() + " in file " + jsonFilename + " -------------");
                                         errors.forEach((k, v) -> System.out.println(k + ": " + v));
-                                        System.out.println("/n/n");
+                                        System.out.println("\n\n");
                                     }
                                     counter.getAndIncrement();
                                     return !clientWithProductsValidator.hasErrors();
@@ -88,10 +90,9 @@ public class ShoppingService {
     }
 
     //method 2.In separate method show client that paid the most in selected category.
-    //Name of category pass as an method argument
 
-    public Client getCategoryHighestPaymentClient(String category){
-        if(category == null){
+    public Client getCategoryHighestPaymentClient(Category category) {
+        if (category == null) {
             throw new AppException("getCategoryHighestPaymentClient value is null");
         }
 
@@ -104,7 +105,7 @@ public class ShoppingService {
 
     }
 
-    private BigDecimal totalPriceForProductsFromCategory(Map<Product, Long> products, String category){
+    private BigDecimal totalPriceForProductsFromCategory(Map<Product, Long> products, Category category) {
         return products
                 .entrySet()
                 .stream()
@@ -125,14 +126,15 @@ public class ShoppingService {
     }
 
 
-    //method 3. Create a map, where key is product category and value is age of clients that bought the most in this cat.
+    //method 3. Create a map, where key is product category and value
+    //is age of clients that bought the most in this category.
 
     public Map<String, Integer> getClientsAgeToCategory() {
         return clientsWithProducts
                 .entrySet()
                 .stream()
                 .collect(Collectors.groupingBy(
-                        c -> getMaxCategory(c.getValue()),
+                        category -> getMaxCategory(category.getValue()),
                         Collectors.collectingAndThen(
                                 Collectors.mapping(age -> age.getKey().getAge(), Collectors.toList()),
                                 items -> items
@@ -164,7 +166,10 @@ public class ShoppingService {
         return clientsWithProducts
                 .entrySet()
                 .stream()
-                .flatMap(e -> e.getValue().entrySet().stream().flatMap(ee -> Collections.nCopies(ee.getValue().intValue(), ee.getKey()).stream()))
+                .flatMap(mapValue -> mapValue.getValue()
+                        .entrySet()
+                        .stream()
+                        .flatMap(product -> Collections.nCopies(product.getValue().intValue(), product.getKey()).stream()))
                 .collect(Collectors.groupingBy(
                         Product::getCategory,
                         Collectors.collectingAndThen(Collectors.toList(), this::productsStatistic)));
@@ -190,10 +195,10 @@ public class ShoppingService {
         return clientsWithProducts
                 .entrySet()
                 .stream()
-                .flatMap(e -> e.getValue()
+                .flatMap(mapValue -> mapValue.getValue()
                         .entrySet()
                         .stream()
-                        .flatMap(ee -> Collections.nCopies(ee.getValue().intValue(), ee.getKey().getCategory()).stream()))
+                        .flatMap(category -> Collections.nCopies(category.getValue().intValue(), category.getKey().getCategory()).stream()))
                 .distinct()
                 .collect(Collectors.toMap(category -> category, this::findClientWithMaxCategory));
 
@@ -225,16 +230,17 @@ public class ShoppingService {
 
     }
 
-    //method 6.
+    //method 6. Check if client is capable to pay for his order.
 
-    public Map<Client, BigDecimal> clientsWallet() {
+    public Map<String, BigDecimal> clientsWallet() {
         return clientsWithProducts
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(
-                        Map.Entry::getKey,
+                        k -> k.getKey().getNameAndSurname(k.getKey()),
                         this::calculateDebt
                 ));
+
     }
 
     private BigDecimal calculateDebt(Map.Entry<Client, Map<Product, Long>> entry) {
@@ -242,7 +248,6 @@ public class ShoppingService {
         var valueToPay = countProductsPrice(entry.getValue());
         return clientCash.compareTo(valueToPay) < 0 ? clientCash.subtract(valueToPay) : BigDecimal.ZERO;
     }
-
 
 
 }

@@ -22,13 +22,10 @@ public class ProductValidator extends AbstractValidator<Product> {
 
         if(!isProductCategoryNameValid(product.getCategory())){
             errors.put("product category", "category name is invalid" + product.getCategory());
-            return errors;
         }
         if(!isProductPriceValid(product.getPrice())){
             errors.put("product price", "price cannot be null" + product.getPrice());
-            return errors;
         }
-
         return errors;
     }
 

@@ -1,4 +1,4 @@
-package ogorek.wojciech.service;
+package ogorek.wojciech.service.statistics;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

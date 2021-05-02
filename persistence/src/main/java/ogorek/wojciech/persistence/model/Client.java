@@ -16,4 +16,8 @@ public class Client {
     private String surname;
     private int age;
     private BigDecimal cash;
+
+    public String getNameAndSurname(Client client){
+        return client.getName() + " " + client.getSurname();
+    }
 }

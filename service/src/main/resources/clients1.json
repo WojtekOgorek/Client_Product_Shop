@@ -1,0 +1,99 @@
+[
+  {
+    "client": {
+      "name": "Jan",
+      "surname": "Kos",
+      "age": 18,
+      "cash": 6800
+    },
+    "products": [
+      {
+        "name": "Computer",
+        "category": "electronics",
+        "price": 5000
+      },
+      {
+        "name": "Tv",
+        "category": "rtv",
+        "price": 1500
+      },
+      {
+        "name": "Fridge",
+        "category": "agd",
+        "price": 3200
+      }
+    ]
+  },
+
+  {
+    "client": {
+      "name": "Adam",
+      "surname": "Kowal",
+      "age": 55,
+      "cash": 1000
+    },
+    "products": [
+      {
+        "name": "Pan Tadeusz",
+        "category": "book",
+        "price": 60
+      },
+      {
+        "name": "Potop",
+        "category": "book",
+        "price": 70
+      }
+    ]
+  },
+  {
+    "client": {
+      "name": "Wojtek",
+      "surname": "Drwal",
+      "age": 34,
+      "cash": 2500
+    },
+    "products": [
+      {
+        "name": "Electric kettle",
+        "category": "agd",
+        "price": 100
+      },
+      {
+        "name": "Hi-fi Set",
+        "category": "rtv",
+        "price": 500
+      },
+      {
+        "name": "Tv",
+        "category": "rtv",
+        "price": 2100
+      }
+    ]
+  },
+  {
+    "client": {
+      "name": "Michal",
+      "surname": "Kowalski",
+      "age": 55,
+      "cash": 10000
+    },
+    "products": [
+      {
+        "name": "Desktop lamp",
+        "category": "electronics",
+        "price": 75
+      },
+      {
+        "name": "Phone charger",
+        "category": "electronics",
+        "price": 110
+      },
+      {
+        "name": "Computer monitor",
+        "category": "rtv",
+        "price": 700
+      }
+    ]
+  }
+
+]

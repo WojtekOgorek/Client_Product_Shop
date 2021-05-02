@@ -19,15 +19,12 @@ public class ClientValidator extends AbstractValidator<Client> {
         }
         if(!isClientNameValid(client.getName())){
             errors.put("client name", "name object cannot be null and first letter must be uppercase" + client.getName());
-            return errors;
         }
         if(!isClientSurnameValid(client.getSurname())){
             errors.put("client surname", "surname object cannot be null and first letter must be uppercase" + client.getSurname());
-            return errors;
         }
         if(!isClientAgeValid(client.getAge())){
             errors.put("client age", "age cannot be null and cannot be lesser than 0" + client.getAge());
-            return errors;
         }
         if(!isClientCashValid(client.getCash())){
             errors.put("client cash", "cash object cannot be null" + client.getCash());
