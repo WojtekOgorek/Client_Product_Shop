@@ -10,7 +10,7 @@
       {
         "name": "Computer",
         "category": "electronics",
-        "price": 5000
+        "price": 100
       },
       {
         "name": "Tv",
@@ -84,7 +84,17 @@
         "price": 75
       },
       {
-        "name": "Phone charger",
+        "name": "Tv Cable",
+        "category": "electronics",
+        "price": 110
+      },
+      {
+        "name": "Cable",
+        "category": "electronics",
+        "price": 110
+      },
+      {
+        "name": "rca cable",
         "category": "electronics",
         "price": 110
       },

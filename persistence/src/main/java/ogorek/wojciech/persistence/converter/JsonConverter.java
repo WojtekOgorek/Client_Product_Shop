@@ -26,7 +26,7 @@ public abstract class JsonConverter<T> {
             }
             gson.toJson(element, fileWriter);
         }catch (Exception e){
-            throw new JsonException("toJson exception" + e.getMessage());
+            throw new JsonException("toJson exception " + e.getMessage());
         }
 
     }
@@ -35,7 +35,7 @@ public abstract class JsonConverter<T> {
         try(FileReader fileReader = new FileReader(jsonFilename)){
             return Optional.of(gson.fromJson(fileReader, type));
         }catch (Exception e){
-            throw new JsonException("fromJson exception" + e.getMessage());
+            throw new JsonException("fromJson exception " + e.getMessage());
         }
 
     }

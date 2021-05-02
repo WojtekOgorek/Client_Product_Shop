@@ -70,6 +70,7 @@ public class ShoppingService {
         return m1;
     }
 
+
     //method 1. Show Client that paid the most for his products
 
     public Client getClientWhoPaidTheMost() {
@@ -91,7 +92,7 @@ public class ShoppingService {
 
     //method 2.In separate method show client that paid the most in selected category.
 
-    public Client getCategoryHighestPaymentClient(Category category) {
+    public Client getCategoryHighestPaymentClient(String category) {
         if (category == null) {
             throw new AppException("getCategoryHighestPaymentClient value is null");
         }
@@ -99,32 +100,20 @@ public class ShoppingService {
         return clientsWithProducts
                 .entrySet()
                 .stream()
-                .max(Comparator.comparing(client -> totalPriceForProductsFromCategory(client.getValue(), category)))
+                .max(Comparator.comparing(product -> totalPriceForProductsFromCategory(product.getValue(), category)))
                 .orElseThrow()
                 .getKey();
 
     }
 
-    private BigDecimal totalPriceForProductsFromCategory(Map<Product, Long> products, Category category) {
+    private BigDecimal totalPriceForProductsFromCategory(Map<Product, Long> products, String category) {
         return products
                 .entrySet()
                 .stream()
                 .filter(e -> e.getKey().getCategory().equals(category))
-                .flatMap(value -> Collections.nCopies(value.getValue().intValue(), value.getKey()).stream())
-                .map(p -> p.getPrice())
+                .map(price -> price.getKey().getPrice().multiply(BigDecimal.valueOf(price.getValue())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
-
-
-    private BigDecimal countProductsPrice(Map<Product, Long> products) {
-
-        return products
-                .entrySet()
-                .stream()
-                .map(value -> value.getKey().getPrice().multiply(BigDecimal.valueOf(value.getValue())))
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
-
 
     //method 3. Create a map, where key is product category and value
     //is age of clients that bought the most in this category.
@@ -158,7 +147,7 @@ public class ShoppingService {
                 .orElseThrow()
                 .getKey();
     }
-    //TODO
+
     //method 4.Returns map with average, min, max price of specific category
 
     public Map<String, Statistic> getCategoryAndPriceStatistics() {
@@ -247,6 +236,20 @@ public class ShoppingService {
         var clientCash = entry.getKey().getCash();
         var valueToPay = countProductsPrice(entry.getValue());
         return clientCash.compareTo(valueToPay) < 0 ? clientCash.subtract(valueToPay) : BigDecimal.ZERO;
+    }
+
+    private BigDecimal countProductsPrice(Map<Product, Long> products) {
+
+        return products
+                .entrySet()
+                .stream()
+                .map(value -> value.getKey().getPrice().multiply(BigDecimal.valueOf(value.getValue())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    //method 7. Show all customers
+    public List<Client> allCustomers(){
+        return new ArrayList<>(clientsWithProducts.keySet());
     }
 
 

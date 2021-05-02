@@ -1,0 +1,12 @@
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\validator\generic\Validator.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\converter\JsonClientWithProductsConverter.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\converter\JsonConverter.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\validator\impl\ProductValidator.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\model\ClientWithProducts.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\model\Product.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\validator\generic\AbstractValidator.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\exception\AppException.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\model\Client.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\validator\impl\ClientValidator.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\exception\JsonException.java
+C:\Work\KmPrograms\Java\Coding\Projects_GIT\Client_Product_Shop\persistence\src\main\java\ogorek\wojciech\persistence\validator\impl\ClientWithProductsValidator.java

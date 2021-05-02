@@ -1,0 +1,15 @@
+ogorek\wojciech\persistence\converter\JsonClientWithProductsConverter.class
+ogorek\wojciech\persistence\model\Client$ClientBuilder.class
+ogorek\wojciech\persistence\validator\impl\ClientValidator.class
+ogorek\wojciech\persistence\validator\impl\ClientWithProductsValidator.class
+ogorek\wojciech\persistence\validator\generic\Validator.class
+ogorek\wojciech\persistence\converter\JsonConverter.class
+ogorek\wojciech\persistence\model\ClientWithProducts$ClientWithProductsBuilder.class
+ogorek\wojciech\persistence\model\ClientWithProducts.class
+ogorek\wojciech\persistence\validator\generic\AbstractValidator.class
+ogorek\wojciech\persistence\model\Client.class
+ogorek\wojciech\persistence\validator\impl\ProductValidator.class
+ogorek\wojciech\persistence\exception\JsonException.class
+ogorek\wojciech\persistence\model\Product.class
+ogorek\wojciech\persistence\model\Product$ProductBuilder.class
+ogorek\wojciech\persistence\exception\AppException.class

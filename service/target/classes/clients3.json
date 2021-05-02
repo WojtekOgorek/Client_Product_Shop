@@ -1,0 +1,98 @@
+[
+  {
+    "client": {
+      "name": "Tomasz",
+      "surname": "Tomasz",
+      "age": 35,
+      "cash": 50000
+    },
+    "products": [
+      {
+        "name": "Headphones",
+        "category": "rtv",
+        "price": 350
+      },
+      {
+        "name": "Jack cable",
+        "category": "electronics",
+        "price": 15
+      },
+      {
+        "name": "Batteries",
+        "category": "electronics",
+        "price": 3.5
+      },
+      {
+        "name": "Smartphone",
+        "category": "electronics",
+        "price": 1100
+      },
+      {
+        "name": "Microphone",
+        "category": "electronics",
+        "price": 65
+      },
+      {
+        "name": "Kindle",
+        "category": "electronics",
+        "price": 400
+      },
+      {
+        "name": "Diuna",
+        "category": "book",
+        "price": 65
+      }
+    ]
+  },
+
+  {
+    "client": {
+      "name": "Kamil",
+      "surname": "Biedronka",
+      "age": 32,
+      "cash": 330
+    },
+    "products": [
+      {
+        "name": "Desk lamp",
+        "category": "rtv",
+        "price": 70
+      },
+      {
+        "name": "Computer mouse",
+        "category": "rtv",
+        "price": 110
+      }
+    ]
+  },
+  {
+    "client": {
+      "name": "Adam",
+      "surname": "Czarny",
+      "age": 77,
+      "cash": 200
+    },
+    "products": [
+      {
+        "name": "Hair dryer",
+        "category": "electronics",
+        "price": 120
+      }
+    ]
+  },
+  {
+    "client": {
+      "name": "Eryk",
+      "surname": "Badu",
+      "age": 24,
+      "cash": 1000
+    },
+    "products": [
+      {
+        "name": "Washing machine",
+        "category": "agd",
+        "price": 1100
+      }
+    ]
+  }
+]

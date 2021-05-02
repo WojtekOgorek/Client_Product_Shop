@@ -20,7 +20,7 @@
         <revision>1.0</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>13</java.version>
+        <java.version>15</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
@@ -163,9 +163,7 @@
                         <id>flatten.clean</id>
                         <phase>clean</phase>
                         <goals>
-                            <goal>
-                                clean
-                            </goal>
+                            <goal>clean</goal>
                         </goals>
                     </execution>
                 </executions>

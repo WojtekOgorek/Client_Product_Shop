@@ -1,0 +1,73 @@
+[
+  {
+    "client": {
+      "name": "Dominik",
+      "surname": "Stefano",
+      "age": 50,
+      "cash": 100
+    },
+    "products": [
+      {
+        "name": "Batteries",
+        "category": "electronics",
+        "price": 5
+      },
+      {
+        "name": "Rca cable",
+        "category": "electronics",
+        "price": 35
+      }
+    ]
+  },
+
+  {
+    "client": {
+      "name": "Kamil",
+      "surname": "Biedronka",
+      "age": 32,
+      "cash": 330
+    },
+    "products": [
+      {
+        "name": "Hyperion",
+        "category": "book",
+        "price": 60
+      },
+      {
+        "name": "Ksiegi Jakubowe",
+        "category": "book",
+        "price": 90
+      }
+    ]
+  },
+  {
+    "client": {
+      "name": "Wojtek",
+      "surname": "Drwal",
+      "age": 34,
+      "cash": 2500
+    },
+    "products": [
+      {
+        "name": "Hair dryer",
+        "category": "electronics",
+        "price": 120
+      }
+    ]
+  },
+  {
+    "client": {
+      "name": "Michal",
+      "surname": "Kowalski",
+      "age": 55,
+      "cash": 10000
+    },
+    "products": [
+      {
+        "name": "Tv",
+        "category": "rtv",
+        "price": 4500
+      }
+    ]
+  }
+]
