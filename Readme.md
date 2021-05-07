@@ -6,6 +6,7 @@ The complexity of those appears because main data structure is Map nested in Map
 ## Installation
 
 Use maven -> [link](https://maven.apache.org/download.cgi) <- to install client product shop.
+You need to add file paths to json paths to the filename variables.
 
 ```bash
 #main folder
