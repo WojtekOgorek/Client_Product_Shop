@@ -10,9 +10,9 @@ public class App
     public static void main( String[] args ) {
 
         final Set<String> jsonFiles = Set.of(
-                "C:\\Work\\KmPrograms\\Java\\Coding\\Projects_GIT\\Client_Product_Shop\\service\\src\\main\\resources\\clients1.json",
-                "C:\\Work\\KmPrograms\\Java\\Coding\\Projects_GIT\\Client_Product_Shop\\service\\src\\main\\resources\\clients2.json",
-                "C:\\Work\\KmPrograms\\Java\\Coding\\Projects_GIT\\Client_Product_Shop\\service\\src\\main\\resources\\clients3.json");
+                "<filepath_to_resources>/clients1.json",
+                "<filepath_to_resources>/clients2.json",
+                "<filepath_to_resources>/clients3.json");
 
         var shoppingService = new ShoppingService(jsonFiles);
         MenuService menuService = new MenuService(shoppingService);

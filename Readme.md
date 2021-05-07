@@ -5,7 +5,7 @@ The complexity of those appears because main data structure is Map nested in Map
 
 ## Installation
 
-Use maven -> [link](https://maven.apache.org/download.cgi) <- to install car management system 1.
+Use maven -> [link](https://maven.apache.org/download.cgi) <- to install client product shop.
 
 ```bash
 #main folder
